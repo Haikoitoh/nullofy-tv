@@ -1,0 +1,124 @@
+{
+  "_readme": [
+    "Art sources for Nullofy. Add, remove or reorder entries here; no Java change is needed, only a rebuild.",
+    "Each source names an api from 'apis'. A picture is chosen by a random number only (a random result offset,",
+    "page or index from SecureRandom), never by an image or file name. 'terms' are search filters (a category,",
+    "a place, a painter); one is picked at random, then a random position inside its results.",
+    "Rules: only public-domain or freely licensed pictures, via official APIs, no keys, no scraping.",
+    "Every api URL and every image host must be https. Images from hosts not in 'imageHosts' are refused.",
+    "'mix': true puts the source in Mix; it is also in Aesthetic mode's background unless 'aesthetic': false (the whole Earth on black looks empty behind Home)."
+  ],
+
+  "apis": {
+    "nasa":    "https://images-api.nasa.gov/search",
+    "epic":    "https://epic.gsfc.nasa.gov/api/natural",
+    "epicImg": "https://epic.gsfc.nasa.gov/archive/natural",
+    "commons": "https://commons.wikimedia.org/w/api.php",
+    "met":     "https://collectionapi.metmuseum.org/public/collection/v1.1/search",
+    "metObj":  "https://collectionapi.metmuseum.org/public/collection/v1/objects",
+    "aic":     "https://api.artic.edu/api/v1/artworks/search",
+    "aicImg":  "https://www.artic.edu/iiif/2"
+  },
+
+  "_safe": [
+    "Safe Pictures (Settings, on by default): none of these APIs has a 'safe' switch, so pictures are judged by their",
+    "metadata. A picture is skipped when its title, The Met's tags, the Art Institute's subjects and terms, or its",
+    "Commons categories contain one of 'words' (whole words, any case). 'skipPainters' are left out of Paintings",
+    "altogether, as so much of their work is nudes. It catches most pictures, not all: some have no such metadata."
+  ],
+  "safe": {
+    "words": ["nude", "nudes", "nudity", "naked", "erotic", "erotica", "shunga", "bather", "bathers", "bathing woman",
+              "bathing women", "venus", "odalisque", "leda", "danaë", "danae", "susanna", "bathsheba", "olympia",
+              "three graces", "nymph", "nymphs", "satyr", "bacchanal", "bacchanale", "diana and actaeon",
+              "judgment of paris", "adam and eve", "lucretia", "andromeda", "toilette", "reclining woman", "female figure",
+              "male figure", "topless", "breast", "breasts", "lingerie", "brothel"],
+    "skipPainters": ["Gauguin", "Renoir", "Titian", "Rubens", "Utamaro"]
+  },
+
+  "_never": "Never shown, whatever the settings (the same whole-word check as 'safe'): bloody kills, gore and carcasses. A bird with a fish or an animal grazing is fine; the words aim at blood. Commons categories such as 'Predation by Panthera leo' or 'Carcasses' are what usually catch them.",
+  "never": {
+    "words": ["blood", "bloody", "bloodied", "bleeding", "gore", "gory", "entrails", "guts", "wound", "wounded", "injured",
+              "kill", "kills", "killed", "killing", "kill site", "predation", "with prey", "with its prey", "devouring", "devours",
+              "carcass", "carcasses", "carrion", "corpse", "corpses", "scavenging", "scavenger", "scavengers", "roadkill",
+              "dead animal", "dead animals", "dead game", "game piece", "still life with game", "slaughter", "butchered",
+              "attack", "attacks", "attacking", "skull", "bones", "eating meat", "eating prey"]
+  },
+
+  "imageHosts": [
+    "images-assets.nasa.gov",
+    "epic.gsfc.nasa.gov",
+    "upload.wikimedia.org",
+    "thumb.wikimedia.org",
+    "images.metmuseum.org",
+    "www.artic.edu"
+  ],
+
+  "_offline": "Offline pictures: fetched once from 'url' (an allowed image host) while Off Grid is off, shrunk to 512x288 WebP (about 32 KB each) and kept in private storage as 'file'. Aesthetic mode shows them when Off Grid is on or the web cannot be reached. The Met, CC0.",
+  "offline": [
+    { "file": "wave.webp", "url": "https://images.metmuseum.org/CRDImages/as/web-large/DP130155.jpg", "by": "Katsushika Hokusai", "credit": "UNDER THE WAVE OFF KANAGAWA · CA. 1830–32 · THE MET · CC0" },
+    { "file": "wheat.webp", "url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-42549-001.jpg", "by": "Vincent van Gogh", "credit": "WHEAT FIELD WITH CYPRESSES · 1889 · THE MET · CC0" },
+    { "file": "irises.webp", "url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP346474.jpg", "by": "Vincent van Gogh", "credit": "IRISES · 1890 · THE MET · CC0" }
+  ],
+
+  "sources": [
+    { "id": "space", "label": "Space", "api": "nasa", "mix": true, "credit": "SPACE",
+      "_terms": "Rockets, spacecraft, astronauts, Earth from orbit and deep space. 'title:' searches NASA's titles only (much cleaner than a free search); titles containing any 'exclude' word are skipped (press events, tests, people at desks).",
+      "terms": ["title:liftoff", "title:Space Shuttle launch", "title:rollout", "title:Artemis I launch", "title:spacewalk",
+                "title:docked", "title:Earth observation", "nebula", "spiral galaxy", "star cluster"],
+      "exclude": ["simulation", "demonstration", "demo test", "news conference", "post-launch", "live launch", "briefing",
+                  "kennedy space center, fla.", "team", "grand opening", "projected", "artist", "training", "practice",
+                  "inspect", "prepares", "holds", "greets", "test", "meeting", "ceremony", "media"] },
+
+    { "id": "earth", "label": "Earth", "api": "epic", "mix": true, "aesthetic": false, "credit": "EARTH" },
+
+    { "id": "sea", "label": "Sea", "api": "commons", "mix": true, "credit": "SEA",
+      "terms": ["incategory:Quality_images seascape -fish -underwater -diving"] },
+
+    { "id": "flowers", "label": "Flowers", "api": "commons", "mix": true, "credit": "FLOWERS",
+      "terms": ["incategory:Featured_pictures_of_flowers -intitle:poster -intitle:collage -intitle:montage"] },
+
+    { "id": "animals", "label": "Animals", "api": "commons", "mix": true, "credit": "ANIMALS",
+      "terms": ["deepcat:\"Featured pictures of mammals\""] },
+
+    { "id": "birds", "label": "Birds", "api": "commons", "mix": true, "credit": "BIRDS",
+      "terms": ["deepcat:\"Featured pictures of birds\""] },
+
+    { "id": "landmarks", "label": "Landmarks", "api": "commons", "mix": true, "credit": "LANDMARKS",
+      "prefix": "incategory:Quality_images filetype:bitmap ",
+      "terms": [
+        "\"Sydney Opera House\"", "Colosseum", "\"Giza\" pyramids", "\"Golden Gate Bridge\"", "\"Empire State Building\"",
+        "Manhattan skyline", "Shenzhen", "\"Taj Mahal\"", "\"Eiffel Tower\"", "\"Petra\" Jordan", "\"Machu Picchu\"",
+        "\"Great Wall\"", "\"Angkor Wat\"", "Dubai skyline", "\"Tower Bridge\"", "\"Statue of Liberty\"",
+        "\"Sagrada Família\"", "Neuschwanstein", "\"Mont-Saint-Michel\"", "\"Chichen Itza\"", "\"Forbidden City\"",
+        "Acropolis Athens", "\"Hagia Sophia\"", "\"Petronas Towers\"", "\"Marina Bay\"", "\"Brooklyn Bridge\"",
+        "Kinkaku-ji", "\"St. Peter's Basilica\"", "Shanghai Pudong", "\"Hong Kong\" skyline", "\"Big Ben\"",
+        "\"Burj Khalifa\"", "\"Louvre Pyramid\"", "\"Notre-Dame de Paris\"", "\"Arc de Triomphe\"",
+        "\"Palace of Versailles\"", "\"Brandenburg Gate\"", "\"Cologne Cathedral\"", "\"Leaning Tower of Pisa\"",
+        "\"Saint Basil's Cathedral\"", "\"Alhambra Granada\"", "\"CN Tower\"", "\"Space Needle\"", "\"Chrysler Building\"",
+        "\"Flatiron Building\"", "\"Lincoln Memorial\"", "\"United States Capitol\"", "\"Christ the Redeemer\"",
+        "\"Potala Palace\"", "\"Temple of Heaven\"", "\"Lotus Temple\"", "\"Golden Temple\" Amritsar",
+        "\"Gateway of India\"", "\"Hawa Mahal\"", "\"Red Fort\" Delhi", "\"Qutb Minar\"", "\"Himeji Castle\"",
+        "\"Tokyo Skytree\"", "\"Tokyo Tower\"", "\"Fushimi Inari\"", "\"Wat Arun\"", "Borobudur", "Parthenon",
+        "\"Pantheon Rome\"", "\"Trevi Fountain\"", "\"Florence Cathedral\"", "\"Doge's Palace\"", "Atomium",
+        "\"Schönbrunn Palace\"", "\"Prague Castle\"", "\"Blue Mosque\" Istanbul", "\"Sheikh Zayed Grand Mosque\"",
+        "\"Guggenheim Museum Bilbao\"", "\"The Shard\" London", "\"Edinburgh Castle\""
+      ] },
+
+    { "id": "paintings", "label": "Paintings", "api": "paintings", "mix": true,
+      "_eras": "Each era: a painter is picked at random (must appear in the artist's name), then one of 'apis' at random.",
+      "eras": [
+        { "id": "renaissance", "label": "Renaissance", "metDepartment": 11, "apis": ["met", "aic", "commons"],
+          "painters": ["Leonardo", "Botticelli", "Raphael", "Titian", "Dürer", "Bruegel", "Michelangelo"] },
+        { "id": "baroque", "label": "Baroque", "metDepartment": 11, "apis": ["met", "aic", "commons"],
+          "painters": ["Rembrandt", "Vermeer", "Caravaggio", "Velázquez", "Rubens", "Hals"] },
+        { "id": "romanticism", "label": "Romanticism", "metDepartment": 11, "apis": ["met", "aic", "commons"],
+          "painters": ["Turner", "Friedrich", "Delacroix", "Constable", "Goya", "Géricault"] },
+        { "id": "impressionism", "label": "Impressionism", "metDepartment": 11, "apis": ["met", "aic", "commons"],
+          "painters": ["Monet", "Renoir", "Degas", "Pissarro", "Sisley", "Morisot", "Manet"] },
+        { "id": "postimp", "label": "Post-Impressionism", "metDepartment": 11, "apis": ["met", "aic", "commons"],
+          "painters": ["Gogh", "Cézanne", "Seurat", "Gauguin", "Toulouse-Lautrec"] },
+        { "id": "japanese", "label": "Japanese Prints", "metDepartment": 6, "prints": true, "apis": ["met", "aic"],
+          "painters": ["Hokusai", "Hiroshige", "Utamaro", "Kuniyoshi"] }
+      ] }
+  ]
+}

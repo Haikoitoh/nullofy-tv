@@ -1,0 +1,7 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+  <!-- a screen on a stand -->
+  <path android:pathData="M22 28L86 28Q90 28 90 32L90 70Q90 74 86 74L22 74Q18 74 18 70L18 32Q18 28 22 28Z" android:strokeColor="#FFFFFFFF" android:strokeWidth="4" android:strokeLineJoin="round"/>
+  <path android:pathData="M40 84L68 84" android:strokeColor="#FFFFFFFF" android:strokeWidth="4" android:strokeLineCap="round" android:strokeAlpha="0.3"/>
+</vector>

@@ -1,0 +1,8 @@
+launcher/out/
+launcher/nullofy.keystore
+launcher/nullofy.keystore.pass
+*.keystore
+*.jks
+*.apk
+shot*.png
+.DS_Store

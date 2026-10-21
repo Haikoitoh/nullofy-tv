@@ -1,0 +1,56 @@
+# TCL Google TV, Android 14 (SDK 34), MediaTek. Tested on a TCL Smart TV Pro (2.4 GB RAM), 2026-10.
+# Close relatives (check with debloat/scan.sh first): other TCL Google TV sets on Android 12-14.
+#
+# Format: "[safe]", "[unused]" or "[ask]" starts a tier; one package per line, a note after it; "#" comments.
+# Every package is disabled for user 0 only (pm disable-user), never uninstalled, and restore.sh turns it back on.
+#
+#   [safe]    ads, promos, tracking and telemetry. Nothing you use stops working (tested on the TV above).
+#   [unused]  safe if you don't use the feature named in the note (tested on the TV above).
+#   [ask]     a real choice, or not yet tested on this model. Never disabled without a yes for that package.
+
+[safe]
+com.tcl.tv.plus                        TCL TV+ (ad-supported channels and promos)
+com.tcl.channelplus                    TCL Channel (FAST channels with ads)
+com.tcl.esticker                       on-screen stickers and promos
+com.tcl.exhibit                        shop demo mode
+com.tcl.hotelmenu                      hotel mode
+com.tcl.interactive                    TIAS interactive ads
+com.tcl.messagebox                     TCL message box (ads and notices)
+com.tcl.t_solo                         TCL promo app
+com.instagram.airwave                  preinstalled Instagram stub
+com.tcl.dashboard                      TCL home panel with promos (TCL's Quick Panel stays)
+com.tcl.logkit                         TCL log uploader
+com.android.adservices.api             Android ad services (Privacy Sandbox)
+com.android.ondevicepersonalization.services   on-device ad personalisation
+com.android.federatedcompute.services  federated learning for ads/personalisation
+
+[unused]
+com.tcl.ttvs                           ACR: watches what is on screen (Samba TV frame server) plus TCL usage and ID tracking. Recommended off. Also carries T-Cast (casting from TCL's phone app) and the Alexa core: keep it only if you use those
+com.android.printspooler               printing
+com.android.healthconnect.controller   Health Connect
+com.android.health.connect.backuprestore   Health Connect backups
+com.google.android.play.games          Google Play Games
+com.google.android.apps.tv.dreamx      Google's ambient screensaver (Nullofy has its own; with neither, the screen just dims)
+
+[ask]
+android.autoinstalls.config.google.gtvpai   Google TV auto-installs of partner apps (untested)
+com.google.android.feedback            Google feedback reports (untested)
+com.android.tv.feedbackconsent         feedback consent screen (untested)
+com.tcl.ocean.instructions             TCL user guide (untested)
+com.tcl.repairguide                    TCL repair guide (untested)
+com.tcl.gamebar                        TCL game bar overlay (untested)
+com.tcl.hearaid                        hearing aid audio (untested)
+com.tcl.browser                        TCL browser (untested)
+com.tcl.smartalexa                     Alexa app (untested; the Alexa core goes with com.tcl.ttvs)
+com.tcl.partnercustomizer              TCL tweaks to Google TV's home rows (untested)
+com.tcl.smartlink.core                 TCL silent app installer (untested)
+com.tcl.tv.tclhome_passive             TCL home helper (untested)
+com.tcl.UpdatePeripheral               updates for TCL accessories (untested)
+com.tcl.usercenter                     TCL account (untested)
+com.tcl.airplay2                       AirPlay from Apple devices (untested)
+com.google.android.apps.mediashell     Chromecast built-in: casting from phones (untested)
+com.google.android.videos              Google TV movies and shows store
+com.google.android.youtube.tvmusic     YouTube Music
+com.google.android.youtube.tvunplugged YouTube TV
+com.google.android.marvin.talkback     TalkBack screen reader (keep it if anyone in the house uses it)
+com.google.android.tts                 Google text-to-speech (used by TalkBack and voice replies)

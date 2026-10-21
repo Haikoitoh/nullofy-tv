@@ -1,0 +1,9 @@
+Nullofy TV includes:
+
+1. Geist and Geist Mono (https://github.com/vercel/geist-font), Copyright 2024 The Geist Project Authors,
+   SIL Open Font License 1.1: launcher/assets/fonts/OFL.txt. The files in launcher/assets/fonts are subsets made
+   with launcher/tools/make_fonts.py.
+
+2. Pictures shown by the launcher are not part of this repository. They are fetched at run time from The
+   Metropolitan Museum of Art Open Access, the Art Institute of Chicago API (CC0 images), Wikimedia Commons
+   (public domain and free licences, credited on screen) and NASA's image library, and shown with their credits.

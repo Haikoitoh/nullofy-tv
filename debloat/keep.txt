@@ -1,0 +1,45 @@
+# Never disable: every script refuses these, whatever a list says. A trailing * is a prefix match.
+com.google.android.apps.tv.launcherx      # Google TV home: with it off, Home can land on a black setup-recovery screen
+com.google.android.tungsten.setupwraith   # with launcherx off it takes Home (black screen); also owns Wi-Fi saved during setup
+com.tcl.tv                                # Live TV and HDMI player
+com.tcl.tvinput
+com.tcl.initsetup                         # TCL setup; with providers.config and factory.view off, Wi-Fi can drop
+com.tcl.systemserver
+com.tcl.providers.config
+com.tcl.factory.view
+com.tcl.globalkeyoverlay
+com.tcl.useragreement
+com.tcl.systemui.plugin
+com.tcl.autopair                          # remote pairing
+com.tvos
+com.google.android.gms
+com.android.vending
+com.google.android.tv.remote.service
+com.google.android.inputmethod.latin
+com.android.tv.settings*
+com.mediatek.*
+tv.nullofy.launcher
+android
+com.android.systemui
+com.android.providers.*
+com.android.bluetooth
+com.android.wifi*
+com.android.networkstack*
+com.android.permissioncontroller
+com.android.packageinstaller
+com.android.shell
+com.google.android.tvlauncher             # older Android TV home
+com.google.android.leanbacklauncher
+com.google.android.katniss                # voice search and the remote's mic
+com.google.android.gsf                    # Google services framework
+com.google.android.webview                # web pages inside apps
+com.tcl.android.webview
+com.google.android.permissioncontroller
+com.google.android.packageinstaller
+com.google.android.ext.*
+com.google.android.modulemetadata
+com.google.android.onetimeinitializer
+com.google.android.partnersetup
+com.google.android.safetycenter.resources
+com.dolby.*                               # sound processing
+com.tcl.suspension                        # the remote's Input key on TCL

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tv.nullofy.launcher"
+    android:versionCode="1"
+    android:versionName="1.0.0">
+
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="34" />
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- Watch Next rows for the Right panel ("normal" permission, granted at install) -->
+    <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
+    <!-- Android 11+: needed to read other apps' Watch Next rows (asked once) -->
+    <uses-permission android:name="android.permission.READ_TV_LISTINGS" />
+    <!-- Art pictures and Watch Next posters, https only (usesCleartextTraffic="false") -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- lets the Right panel's "Uninstall" open the system uninstall dialog -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+
+    <!-- Android 11+ package visibility: see every launchable app -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <!-- the TV's inputs (HDMI, tuner) for the Inputs entry -->
+        <intent>
+            <action android:name="android.media.tv.TvInputService" />
+        </intent>
+    </queries>
+
+    <application
+        android:label="Nullofy"
+        android:icon="@drawable/icon"
+        android:banner="@drawable/banner"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="false"
+        android:localeConfig="@xml/locales_config"
+        android:supportsRtl="false">
+
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:excludeFromRecents="true"
+            android:resumeWhilePausing="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|uiMode|density"
+            android:theme="@style/Nullofy">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <!-- lets Android offer it as a Home app; Google TV still needs HomeService for the Home key -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Home-key takeover (Google TV ignores the Home setting). Installed but OFF until enabled in
+             Accessibility settings or with `settings put secure enabled_accessibility_services`. -->
+        <service
+            android:name=".HomeService"
+            android:exported="true"
+            android:label="Nullofy Home button"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/home_service" />
+        </service>
+
+        <activity android:name=".DreamPreview" android:exported="false" android:excludeFromRecents="true"
+            android:screenOrientation="landscape" android:theme="@style/Nullofy" />
+
+        <!-- Screensaver: bouncing clock / your text. Chosen with `settings put secure screensaver_components`. -->
+        <service
+            android:name=".NullofyDream"
+            android:exported="true"
+            android:label="Nullofy"
+            android:icon="@drawable/icon"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
