@@ -17,8 +17,6 @@ A small, fast home screen for Android TV and Google TV, plus a careful debloat k
 
 <img src="docs/assets/before-after.png" alt="Before and after: the stock Google TV home with recommendation rows and ads, next to Nullofy with just the apps over a picture. Nothing in the way." width="100%">
 
-<img src="docs/assets/hero.png" alt="Nullofy TV: the home screen on a TV, with the tagline Nothing in the way." width="100%">
-
 <img src="docs/assets/demo.gif" alt="Nullofy TV: the three looks, Dark, Day and Aesthetic, then the Vertical list falls into the Horizontal row" width="720">
 
 </div>
@@ -93,10 +91,6 @@ shows the artist, the collection and the licence.
 
 What it does not do: no root, no system partition changes, no factory reset, no uninstalling of system apps,
 nothing sent anywhere.
-
-<p align="center">
-  <img src="docs/assets/screens.png" alt="Four Nullofy screens: Vertical, Horizontal with Aesthetic, Simple mode and Art" width="100%">
-</p>
 
 ---
 
