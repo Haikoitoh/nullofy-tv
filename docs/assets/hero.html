@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nullofy TV hero</title>
+<!--
+  Hero banner for the README. Render with playwright (1760 x 880, device scale 1):
+  open this file, wait for fonts, screenshot the .canvas element to docs/assets/hero.png.
+  Fonts load from the repo's launcher/assets/fonts. The screenshot is the real TV capture.
+-->
+<style>
+  @font-face { font-family: "Geist"; src: url("../../launcher/assets/fonts/Geist.ttf") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: "Geist Mono"; src: url("../../launcher/assets/fonts/GeistMono.ttf") format("truetype"); font-weight: 100 900; }
+
+  :root {
+    --bg: #06080B;
+    --ink: #F2F5F7;
+    --mute: #9AA3AB;
+    --lime: #C8FF3D;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1760px; height: 880px; background: var(--bg); overflow: hidden; }
+  body { font-family: "Geist", system-ui, sans-serif; color: var(--ink); }
+
+  .canvas {
+    position: relative;
+    width: 1760px;
+    height: 880px;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1.5px);
+    background-size: 36px 36px;
+    background-position: 0 0;
+    overflow: hidden;
+  }
+
+  /* soft lime light behind the TV */
+  .glow {
+    position: absolute;
+    left: 760px; top: 170px;
+    width: 960px; height: 540px;
+    background: radial-gradient(closest-side, rgba(200,255,61,0.30), rgba(200,255,61,0.08) 60%, transparent 100%);
+    filter: blur(20px);
+  }
+
+  .left {
+    position: absolute;
+    left: 112px; top: 0; bottom: 0;
+    width: 600px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .mark { width: 128px; height: 128px; display: block; margin: 0 0 36px -33px; }
+  h1 {
+    font-weight: 700;
+    font-size: 116px;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+  }
+  .tag {
+    margin-top: 26px;
+    font-weight: 600;
+    font-size: 44px;
+    letter-spacing: -0.01em;
+    color: var(--lime);
+  }
+  .sub {
+    margin-top: 28px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--mute);
+    max-width: 600px;
+  }
+  .facts {
+    margin-top: 40px;
+    font-family: "Geist Mono", monospace;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .facts span { color: var(--ink); }
+
+  .frame {
+    position: absolute;
+    left: 800px; top: 200px;
+    width: 888px;
+    padding: 14px;
+    border-radius: 40px;
+    background: linear-gradient(160deg, #1A1F26 0%, #0C0F13 60%, #111519 100%);
+    border: 1.5px solid rgba(255,255,255,0.14);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.6),
+      0 40px 90px -20px rgba(0,0,0,0.85),
+      0 0 120px 0 rgba(200,255,61,0.22);
+  }
+  .screen {
+    width: 860px;
+    height: 483.75px;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #000;
+    display: block;
+  }
+  .screen img { width: 860px; height: 483.75px; display: block; object-fit: cover; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="glow"></div>
+
+  <div class="left">
+    <svg class="mark" viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="108" height="108" rx="24" ry="24" fill="#06080B"/>
+      <circle cx="54" cy="54" r="24" fill="none" stroke="#F2F5F7" stroke-width="4"/>
+      <path d="M33 75L75 33" fill="none" stroke="#C8FF3D" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <h1>Nullofy TV</h1>
+    <p class="tag">Nothing in the way.</p>
+    <p class="sub">A tiny, fast home screen for Android TV and Google TV, plus a careful debloat kit that asks first.</p>
+    <p class="facts"><span>175 KB</span> &nbsp;·&nbsp; <span>No ads</span> &nbsp;·&nbsp; <span>No accounts</span> &nbsp;·&nbsp; <span>No tracking</span></p>
+  </div>
+
+  <div class="frame">
+    <div class="screen">
+      <img src="shots/home_vert.jpg" alt="Nullofy home screen">
+    </div>
+  </div>
+</div>
+</body>
+</html>

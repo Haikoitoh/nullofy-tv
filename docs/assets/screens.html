@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nullofy TV screens</title>
+<!--
+  Screens grid for the README: 2 x 2 real captures with mono captions.
+  Render with playwright at 1600 px wide (device scale 1): screenshot the .canvas element
+  to docs/assets/screens.png. Fonts load from the repo's launcher/assets/fonts.
+-->
+<style>
+  @font-face { font-family: "Geist"; src: url("../../launcher/assets/fonts/Geist.ttf") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: "Geist Mono"; src: url("../../launcher/assets/fonts/GeistMono.ttf") format("truetype"); font-weight: 100 900; }
+
+  :root {
+    --bg: #06080B;
+    --ink: #F2F5F7;
+    --mute: #9AA3AB;
+    --lime: #C8FF3D;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; background: var(--bg); }
+  body { font-family: "Geist", system-ui, sans-serif; color: var(--ink); }
+
+  .canvas {
+    width: 1600px;
+    padding: 64px 80px 60px;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1.5px);
+    background-size: 36px 36px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 44px;
+  }
+  figure { display: flex; flex-direction: column; align-items: center; }
+  .shot {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    box-shadow: 0 24px 50px -18px rgba(0,0,0,0.9), 0 0 60px -10px rgba(200,255,61,0.12);
+    background: #000;
+  }
+  .shot img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  figcaption {
+    margin-top: 18px;
+    width: 100%;
+    text-align: center;
+    font-family: "Geist Mono", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  figcaption b { color: var(--lime); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="grid">
+    <figure>
+      <div class="shot"><img src="shots/home_vert.jpg" alt="Vertical list"></div>
+      <figcaption>Vertical</figcaption>
+    </figure>
+    <figure>
+      <div class="shot"><img src="shots/aesthetic_horizontal.jpg" alt="Horizontal, aesthetic look"></div>
+      <figcaption>Horizontal <b>&middot;</b> Aesthetic</figcaption>
+    </figure>
+    <figure>
+      <div class="shot"><img src="shots/home_simple.jpg" alt="Simple mode"></div>
+      <figcaption>Simple mode</figcaption>
+    </figure>
+    <figure>
+      <div class="shot"><img src="shots/art5.jpg" alt="Art gallery"></div>
+      <figcaption>Art</figcaption>
+    </figure>
+  </div>
+</div>
+</body>
+</html>
